@@ -7,6 +7,7 @@ using TestBase.Api.Models.Permisos;
 using TestBase.Api.Models.Permisos.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TestBase.Api.Controllers
 {
@@ -39,7 +40,7 @@ namespace TestBase.Api.Controllers
         {
             return await _repository.GetAsync(e => e.Nombre.Contains(name));
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("GetByRolId/{roleId}")]
         public ICollection<PermisoWebDto> GetByRolId(string roleId)
         {

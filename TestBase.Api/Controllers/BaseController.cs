@@ -8,8 +8,9 @@ using Microsoft.Extensions.Logging;
 namespace TestBase.Api.Controllers
 {
     //[Authorize("AtiIdentityServer4Policy")]
-    [Authorize("AtiIdentityServer4Policy", AuthenticationSchemes = "Bearer")]
+    //[Authorize("AtiIdentityServer4Policy", AuthenticationSchemes = "Bearer")]
     //[Authorize]
+    [AllowAnonymous]
     [ApiController]
     public class BaseController<T> : ControllerBase where T : Models.Base, new()
     {
@@ -30,21 +31,21 @@ namespace TestBase.Api.Controllers
                 BaseControllerOptions = new BaseControllerOptions();
             }
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("all")]
         public IActionResult GetAll()
         {
             if (!BaseControllerOptions.GetAll) return StatusCode(StatusCodes.Status403Forbidden, bc403);
             return Ok(Repository.GetAll());
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("async/all")]
         public async Task<IActionResult> GetAllAsync()
         {
             if (!BaseControllerOptions.GetAllAsync) return StatusCode(StatusCodes.Status403Forbidden, bc403);
             return Ok(await Repository.GetAllAsync());
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("id/{id}")]
         public IActionResult GetById(string id)
         {
@@ -58,21 +59,21 @@ namespace TestBase.Api.Controllers
             if (!BaseControllerOptions.GetByIdAsync) return StatusCode(StatusCodes.Status403Forbidden, bc403);
             return Ok(await Repository.GetByIdAsync(id));
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("count")]
         public IActionResult Count()
         {
             if (!BaseControllerOptions.Count) return StatusCode(StatusCodes.Status403Forbidden, bc403);
             return Ok(Repository.Count(null));
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("async/count")]
         public async Task<IActionResult> CountAsync()
         {
             if (!BaseControllerOptions.CountAsync) return StatusCode(StatusCodes.Status403Forbidden, bc403);
             return Ok(await Repository.CountAsync(null));
         }
-
+        [AllowAnonymous]
         [HttpPost, Route("add")]
         public IActionResult InsertAndSave([FromBody] T value)
         {
@@ -88,7 +89,7 @@ namespace TestBase.Api.Controllers
             await Repository.InsertAndSaveAsync(value);
             return Ok();
         }
-
+        [AllowAnonymous]
         [HttpPut, Route("edit/{id}")]
         public IActionResult UpdateAndSave(string id, [FromBody] T value)
         {
@@ -104,7 +105,7 @@ namespace TestBase.Api.Controllers
             await Repository.UpdateAndSaveAsync(value);
             return Ok();
         }
-
+        [AllowAnonymous]
         [HttpDelete, Route("delete/{id}")]
         public IActionResult DeleteByIdAndSave(string id)
         {
@@ -124,17 +125,17 @@ namespace TestBase.Api.Controllers
 
     public class BaseControllerOptions
     {
-        public bool GetAll { get; set; } = false;
-        public bool GetAllAsync { get; set; } = false;
-        public bool GetById { get; set; } = false;
-        public bool GetByIdAsync { get; set; } = false;
-        public bool Count { get; set; } = false;
-        public bool CountAsync { get; set; } = false;
-        public bool InsertAndSave { get; set; } = false;
-        public bool InsertAndSaveAsync { get; set; } = false;
-        public bool UpdateAndSave { get; set; } = false;
-        public bool UpdateAndSaveAsync { get; set; } = false;
-        public bool DeleteByIdAndSave { get; set; } = false;
-        public bool DeleteByIdAndSaveAsync { get; set; } = false;
+        public bool GetAll { get; set; } = true;
+        public bool GetAllAsync { get; set; } = true;
+        public bool GetById { get; set; } = true;
+        public bool GetByIdAsync { get; set; } = true;
+        public bool Count { get; set; } = true;
+        public bool CountAsync { get; set; } = true;
+        public bool InsertAndSave { get; set; } = true;
+        public bool InsertAndSaveAsync { get; set; } = true;
+        public bool UpdateAndSave { get; set; } = true;
+        public bool UpdateAndSaveAsync { get; set; } = true;
+        public bool DeleteByIdAndSave { get; set; } = true;
+        public bool DeleteByIdAndSaveAsync { get; set; } = true;
     }
 }

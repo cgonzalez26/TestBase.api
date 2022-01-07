@@ -12,6 +12,7 @@ using TestBase.Api.Models.Usuarios;
 using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.TipoEstablecimientos;
 using AutoMapper;
+using TestBase.Api.Models.ImpuestosAut;
 
 namespace TestBase.Api
 {
@@ -29,6 +30,7 @@ namespace TestBase.Api
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
             services.AddScoped(typeof(IEstablecimientoRepository), typeof(EstablecimientoRepository));
             services.AddScoped(typeof(ITipoEstablecimientoRepository), typeof(TipoEstablecimientoRepository));
+            services.AddScoped(typeof(IImpuestoAutRepository), typeof(ImpuestoAutRepository));
 
             // Scoped Services
             services.AddScoped<IFcmService, FcmService>();

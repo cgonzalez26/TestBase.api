@@ -7,6 +7,7 @@ using TestBase.Api.Models.TipoZonas;
 using TestBase.Api.Models.Zonas;
 using TestBase.Api.Models.TipoEstablecimientos;
 using TestBase.Api.Models.Establecimientos;
+using TestBase.Api.Models.ImpuestosAut;
 
 namespace TestBase.Api.Models
 {
@@ -21,6 +22,7 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new ZonaConfiguration());
             modelBuilder.ApplyConfiguration(new TipoEstablecimientoConfiguration());
             modelBuilder.ApplyConfiguration(new EstablecimientoConfiguration());
+            modelBuilder.ApplyConfiguration(new ImpuestoAutConfiguration());
         }
 
         public static void Seed(this ModelBuilder modelBuilder)

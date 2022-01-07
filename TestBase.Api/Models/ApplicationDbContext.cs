@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TestBase.Api.Models.Establecimientos;
+using TestBase.Api.Models.ImpuestosAut;
 using TestBase.Api.Models.Permisos;
 using TestBase.Api.Models.Roles;
 using TestBase.Api.Models.RolPermisos;
@@ -49,6 +50,8 @@ namespace TestBase.Api.Models
         public DbSet<Establecimiento> Establecimientos { get; set; }
 
         public DbSet<TipoEstablecimiento> TipoEstablecimientos { get; set; }
+
+        public DbSet<ImpuestoAut> ImpuestosAut { get; set; }
 
         public override int SaveChanges()
         {
