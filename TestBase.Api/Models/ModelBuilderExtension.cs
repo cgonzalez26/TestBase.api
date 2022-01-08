@@ -12,6 +12,7 @@ using TestBase.Api.Models.ImpuestosInm;
 using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Inmuebles;
+using TestBase.Api.Models.ImpuestosTsg;
 
 namespace TestBase.Api.Models
 {
@@ -28,6 +29,7 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new EstablecimientoConfiguration());
             modelBuilder.ApplyConfiguration(new ImpuestoAutConfiguration());
             modelBuilder.ApplyConfiguration(new ImpuestoInmConfiguration());
+            modelBuilder.ApplyConfiguration(new ImpuestoTsgConfiguration());
             modelBuilder.ApplyConfiguration(new InmuebleTitularConfiguration());
             modelBuilder.ApplyConfiguration(new TitularConfiguration());
             modelBuilder.ApplyConfiguration(new InmuebleConfiguration());

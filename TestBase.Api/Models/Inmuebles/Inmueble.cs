@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models.ImpuestosInm;
+using TestBase.Api.Models.ImpuestosTsg;
 using TestBase.Api.Models.InmueblesTitulares;
 
 namespace TestBase.Api.Models.Inmuebles
@@ -29,6 +30,9 @@ namespace TestBase.Api.Models.Inmuebles
 
         [JsonIgnore]
         public virtual ICollection<ImpuestoInm> ImpuestosInm { get; set; } = new HashSet<ImpuestoInm>();
+
+        [JsonIgnore]
+        public virtual ICollection<ImpuestoTsg> ImpuestosTsg { get; set; } = new HashSet<ImpuestoTsg>();
 
         [JsonIgnore]
         public virtual ICollection<InmuebleTitular> InmueblesTitulares { get; set; } = new HashSet<InmuebleTitular>();

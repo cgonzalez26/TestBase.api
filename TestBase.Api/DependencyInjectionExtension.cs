@@ -17,6 +17,7 @@ using TestBase.Api.Models.ImpuestosInm;
 using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Inmuebles;
+using TestBase.Api.Models.ImpuestosTsg;
 
 namespace TestBase.Api
 {
@@ -36,6 +37,7 @@ namespace TestBase.Api
             services.AddScoped(typeof(ITipoEstablecimientoRepository), typeof(TipoEstablecimientoRepository));
             services.AddScoped(typeof(IImpuestoAutRepository), typeof(ImpuestoAutRepository));
             services.AddScoped(typeof(IImpuestoInmRepository), typeof(ImpuestoInmRepository));
+            services.AddScoped(typeof(IImpuestoTsgRepository), typeof(ImpuestoTsgRepository));
             services.AddScoped(typeof(IInmuebleTitularRepository), typeof(InmuebleTitularRepository));
             services.AddScoped(typeof(ITitularRepository), typeof(TitularRepository));
             services.AddScoped(typeof(IInmuebleRepository), typeof(InmuebleRepository));

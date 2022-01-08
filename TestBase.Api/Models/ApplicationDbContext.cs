@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.ImpuestosAut;
 using TestBase.Api.Models.ImpuestosInm;
+using TestBase.Api.Models.ImpuestosTsg;
 using TestBase.Api.Models.Inmuebles;
 using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Permisos;
@@ -58,6 +59,8 @@ namespace TestBase.Api.Models
         public DbSet<ImpuestoAut> ImpuestosAut { get; set; }
 
         public DbSet<ImpuestoInm> ImpuestosInm { get; set; }
+
+        public DbSet<ImpuestoTsg> ImpuestosTsg { get; set; }
 
         public DbSet<InmuebleTitular> InmueblesTitulares { get; set; }
 
