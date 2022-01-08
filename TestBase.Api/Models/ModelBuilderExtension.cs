@@ -8,6 +8,10 @@ using TestBase.Api.Models.Zonas;
 using TestBase.Api.Models.TipoEstablecimientos;
 using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.ImpuestosAut;
+using TestBase.Api.Models.ImpuestosInm;
+using TestBase.Api.Models.InmueblesTitulares;
+using TestBase.Api.Models.Titulares;
+using TestBase.Api.Models.Inmuebles;
 
 namespace TestBase.Api.Models
 {
@@ -23,6 +27,10 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new TipoEstablecimientoConfiguration());
             modelBuilder.ApplyConfiguration(new EstablecimientoConfiguration());
             modelBuilder.ApplyConfiguration(new ImpuestoAutConfiguration());
+            modelBuilder.ApplyConfiguration(new ImpuestoInmConfiguration());
+            modelBuilder.ApplyConfiguration(new InmuebleTitularConfiguration());
+            modelBuilder.ApplyConfiguration(new TitularConfiguration());
+            modelBuilder.ApplyConfiguration(new InmuebleConfiguration());
         }
 
         public static void Seed(this ModelBuilder modelBuilder)

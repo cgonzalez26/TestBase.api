@@ -13,6 +13,10 @@ using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.TipoEstablecimientos;
 using AutoMapper;
 using TestBase.Api.Models.ImpuestosAut;
+using TestBase.Api.Models.ImpuestosInm;
+using TestBase.Api.Models.InmueblesTitulares;
+using TestBase.Api.Models.Titulares;
+using TestBase.Api.Models.Inmuebles;
 
 namespace TestBase.Api
 {
@@ -31,6 +35,10 @@ namespace TestBase.Api
             services.AddScoped(typeof(IEstablecimientoRepository), typeof(EstablecimientoRepository));
             services.AddScoped(typeof(ITipoEstablecimientoRepository), typeof(TipoEstablecimientoRepository));
             services.AddScoped(typeof(IImpuestoAutRepository), typeof(ImpuestoAutRepository));
+            services.AddScoped(typeof(IImpuestoInmRepository), typeof(ImpuestoInmRepository));
+            services.AddScoped(typeof(IInmuebleTitularRepository), typeof(InmuebleTitularRepository));
+            services.AddScoped(typeof(ITitularRepository), typeof(TitularRepository));
+            services.AddScoped(typeof(IInmuebleRepository), typeof(InmuebleRepository));
 
             // Scoped Services
             services.AddScoped<IFcmService, FcmService>();

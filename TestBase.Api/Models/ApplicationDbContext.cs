@@ -4,11 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.ImpuestosAut;
+using TestBase.Api.Models.ImpuestosInm;
+using TestBase.Api.Models.Inmuebles;
+using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Permisos;
 using TestBase.Api.Models.Roles;
 using TestBase.Api.Models.RolPermisos;
 using TestBase.Api.Models.TipoEstablecimientos;
 using TestBase.Api.Models.TipoZonas;
+using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Usuarios;
 using TestBase.Api.Models.Zonas;
 
@@ -52,6 +56,14 @@ namespace TestBase.Api.Models
         public DbSet<TipoEstablecimiento> TipoEstablecimientos { get; set; }
 
         public DbSet<ImpuestoAut> ImpuestosAut { get; set; }
+
+        public DbSet<ImpuestoInm> ImpuestosInm { get; set; }
+
+        public DbSet<InmuebleTitular> InmueblesTitulares { get; set; }
+
+        public DbSet<Titular> Titulares { get; set; }
+
+        public DbSet<Inmueble> Inmuebles { get; set; }
 
         public override int SaveChanges()
         {
