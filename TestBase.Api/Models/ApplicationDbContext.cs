@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using TestBase.Api.Models.Denuncias;
 using TestBase.Api.Models.Establecimientos;
 using TestBase.Api.Models.ImpuestosAut;
 using TestBase.Api.Models.ImpuestosInm;
@@ -11,6 +12,7 @@ using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Permisos;
 using TestBase.Api.Models.Roles;
 using TestBase.Api.Models.RolPermisos;
+using TestBase.Api.Models.TipoDenuncias;
 using TestBase.Api.Models.TipoEstablecimientos;
 using TestBase.Api.Models.TipoZonas;
 using TestBase.Api.Models.Titulares;
@@ -67,6 +69,10 @@ namespace TestBase.Api.Models
         public DbSet<Titular> Titulares { get; set; }
 
         public DbSet<Inmueble> Inmuebles { get; set; }
+
+        public DbSet<Denuncia> Denuncias { get; set; }
+
+        public DbSet<TipoDenuncia> TipoDenuncias { get; set; }
 
         public override int SaveChanges()
         {

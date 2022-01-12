@@ -13,6 +13,8 @@ using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Inmuebles;
 using TestBase.Api.Models.ImpuestosTsg;
+using TestBase.Api.Models.Denuncias;
+using TestBase.Api.Models.TipoDenuncias;
 
 namespace TestBase.Api.Models
 {
@@ -33,6 +35,8 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new InmuebleTitularConfiguration());
             modelBuilder.ApplyConfiguration(new TitularConfiguration());
             modelBuilder.ApplyConfiguration(new InmuebleConfiguration());
+            modelBuilder.ApplyConfiguration(new DenunciaConfiguration());
+            modelBuilder.ApplyConfiguration(new TipoDenunciaConfiguration());
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
@@ -43,6 +47,7 @@ namespace TestBase.Api.Models
             modelBuilder.SeedTipoEstablecimientos();
             modelBuilder.SeedZonas();
             modelBuilder.SeedEstablecimientos();
+            modelBuilder.SeedTipoDenuncias();
         }
     }
 }

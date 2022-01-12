@@ -18,6 +18,8 @@ using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Inmuebles;
 using TestBase.Api.Models.ImpuestosTsg;
+using TestBase.Api.Models.TipoDenuncias;
+using TestBase.Api.Models.Denuncias;
 
 namespace TestBase.Api
 {
@@ -41,6 +43,8 @@ namespace TestBase.Api
             services.AddScoped(typeof(IInmuebleTitularRepository), typeof(InmuebleTitularRepository));
             services.AddScoped(typeof(ITitularRepository), typeof(TitularRepository));
             services.AddScoped(typeof(IInmuebleRepository), typeof(InmuebleRepository));
+            services.AddScoped(typeof(ITipoDenunciaRepository), typeof(TipoDenunciaRepository));
+            services.AddScoped(typeof(IDenunciaRepository), typeof(DenunciaRepository));
 
             // Scoped Services
             services.AddScoped<IFcmService, FcmService>();
