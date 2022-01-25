@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models.InmueblesTitulares;
+using TestBase.Api.Models.VehiculosTitulares;
 
 namespace TestBase.Api.Models.Titulares
 {
@@ -33,5 +34,8 @@ namespace TestBase.Api.Models.Titulares
 
         [JsonIgnore]
         public virtual ICollection<InmuebleTitular> InmueblesTitulares { get; set; } = new HashSet<InmuebleTitular>();
+
+        [JsonIgnore]
+        public virtual ICollection<VehiculoTitular> VehiculosTitulares { get; set; } = new HashSet<VehiculoTitular>();
     }
 }

@@ -15,6 +15,8 @@ using TestBase.Api.Models.Inmuebles;
 using TestBase.Api.Models.ImpuestosTsg;
 using TestBase.Api.Models.Denuncias;
 using TestBase.Api.Models.TipoDenuncias;
+using TestBase.Api.Models.Vehiculos;
+using TestBase.Api.Models.VehiculosTitulares;
 
 namespace TestBase.Api.Models
 {
@@ -37,6 +39,8 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new InmuebleConfiguration());
             modelBuilder.ApplyConfiguration(new DenunciaConfiguration());
             modelBuilder.ApplyConfiguration(new TipoDenunciaConfiguration());
+            modelBuilder.ApplyConfiguration(new VehiculoConfiguration());
+            modelBuilder.ApplyConfiguration(new VehiculoTitularConfiguration());
         }
 
         public static void Seed(this ModelBuilder modelBuilder)

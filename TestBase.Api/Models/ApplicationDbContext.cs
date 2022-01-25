@@ -17,6 +17,8 @@ using TestBase.Api.Models.TipoEstablecimientos;
 using TestBase.Api.Models.TipoZonas;
 using TestBase.Api.Models.Titulares;
 using TestBase.Api.Models.Usuarios;
+using TestBase.Api.Models.Vehiculos;
+using TestBase.Api.Models.VehiculosTitulares;
 using TestBase.Api.Models.Zonas;
 
 namespace TestBase.Api.Models
@@ -73,6 +75,10 @@ namespace TestBase.Api.Models
         public DbSet<Denuncia> Denuncias { get; set; }
 
         public DbSet<TipoDenuncia> TipoDenuncias { get; set; }
+
+        public DbSet<Vehiculo> Vehiculos { get; set; }
+
+        public DbSet<VehiculoTitular> VehiculosTitulares { get; set; }
 
         public override int SaveChanges()
         {
