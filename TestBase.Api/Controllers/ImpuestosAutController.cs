@@ -32,7 +32,7 @@ namespace TestBase.Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet, Route("NroDocumento/{NroDocumento}")]
+        [HttpGet, Route("getByNroDocumento/{NroDocumento}")]
         public ICollection<ImpuestoAutWebDto> getByNroDocumento(string NroDocumento) 
         {
             return _impuestos_autRepository.getByNroDocumento(NroDocumento);

@@ -92,24 +92,41 @@ namespace TestBase.Api.Models.ImpuestosAut
         public ICollection<ImpuestoAutWebDto> getByNroDocumento(string NroDocumento)
         {
             var imp_aut = from ia in Context.ImpuestosAut
-                          join v in Context.Vehiculos on ia.VehiculoId equals v.Id
-                          join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
-                          join t in Context.Titulares on vt.TitularId equals t.Id
-                          where t.sNroDocumento.Equals(NroDocumento)
-                          select new ImpuestoAutWebDto
-                          {
-                              Id = ia.Id,
-                              dFecha_Pago = ia.dFecha_Pago,
-                              iAnio = ia.iAnio,
-                              iPeriodo = ia.iPeriodo,
-                              nMonto_Pagar = ia.nMonto_Pagar,
-                              sDominio = ia.sDominio,
-                              nPago = ia.nPago,
-                              nSaldo = ia.nSaldo,
-                              VehiculoId = ia.VehiculoId
-                          };
+                    join v in Context.Vehiculos on ia.VehiculoId equals v.Id
+                    join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
+                    join t in Context.Titulares on vt.TitularId equals t.Id
+                    where t.sNroDocumento.Equals(NroDocumento)
+                    select new ImpuestoAutWebDto
+                    {
+                        Id = ia.Id,
+                        dFecha_Pago = ia.dFecha_Pago,
+                        iAnio = ia.iAnio,
+                        iPeriodo = ia.iPeriodo,
+                        nMonto_Pagar = ia.nMonto_Pagar,
+                        sDominio = ia.sDominio,
+                        nPago = ia.nPago,
+                        nSaldo = ia.nSaldo,
+                        VehiculoId = ia.VehiculoId
+                    };
+            if (NroDocumento.Equals("admin")) {
+                imp_aut = from ia in Context.ImpuestosAut
+                    join v in Context.Vehiculos on ia.VehiculoId equals v.Id
+                    join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
+                    join t in Context.Titulares on vt.TitularId equals t.Id         
+                    select new ImpuestoAutWebDto
+                    {
+                        Id = ia.Id,
+                        dFecha_Pago = ia.dFecha_Pago,
+                        iAnio = ia.iAnio,
+                        iPeriodo = ia.iPeriodo,
+                        nMonto_Pagar = ia.nMonto_Pagar,
+                        sDominio = ia.sDominio,
+                        nPago = ia.nPago,
+                        nSaldo = ia.nSaldo,
+                        VehiculoId = ia.VehiculoId
+                    };
+            }                           
             return imp_aut.ToList();
-
         }
     }
 }

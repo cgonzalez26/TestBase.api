@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models;
 using TestBase.Api.Models.ImpuestosTsg;
+using TestBase.Api.Models.ImpuestosTsg.Dtos;
 
 namespace TestBase.Api.Controllers
 {
@@ -29,6 +30,12 @@ namespace TestBase.Api.Controllers
             _impuestos_tsgRepository = impuestos_tsgRepository;
             BaseControllerOptions.GetAll = true;
             _mapper = mapper;
+        }
+
+        [HttpGet, Route("getByNroDocumento/{NroDocumento}")]
+        public ICollection<ImpuestoTsgWebDto> getByNroDocumento(string NroDocumento)
+        {
+            return _impuestos_tsgRepository.getByNroDocumento(NroDocumento);
         }
     }
 }
