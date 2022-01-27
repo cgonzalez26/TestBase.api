@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models;
 using TestBase.Api.Models.ImpuestosAut;
+using TestBase.Api.Models.ImpuestosAut.Dtos;
 
 namespace TestBase.Api.Controllers
 {
@@ -29,6 +30,12 @@ namespace TestBase.Api.Controllers
             _impuestos_autRepository = impuestos_autRepository;
             BaseControllerOptions.GetAll = true;
             _mapper = mapper;
+        }
+
+        [HttpGet, Route("NroDocumento/{NroDocumento}")]
+        public ICollection<ImpuestoAutWebDto> getByNroDocumento(string NroDocumento) 
+        {
+            return _impuestos_autRepository.getByNroDocumento(NroDocumento);
         }
     }
 }

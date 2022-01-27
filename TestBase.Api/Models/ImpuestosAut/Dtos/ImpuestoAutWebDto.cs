@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Attributes;
+using TestBase.Api.Models.Vehiculos;
 
 namespace TestBase.Api.Models.ImpuestosAut.Dtos
 {
@@ -24,5 +25,6 @@ namespace TestBase.Api.Models.ImpuestosAut.Dtos
 
         [StringLength(64)]
         public string VehiculoId { get; set; }
+        public virtual Vehiculo Vehiculo { get; set; }
     }
 }
