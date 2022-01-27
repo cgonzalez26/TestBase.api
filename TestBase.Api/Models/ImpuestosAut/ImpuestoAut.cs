@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Attributes;
+using TestBase.Api.Models.Vehiculos;
 
 namespace TestBase.Api.Models.ImpuestosAut
 {
@@ -24,5 +25,11 @@ namespace TestBase.Api.Models.ImpuestosAut
         public double nPago { get; set; }
         public double nSaldo { get; set; }
         public string tObservaciones { get; set; }
+
+        [StringLength(64)]
+        public string VehiculoId { get; set; }
+
+        [JsonIgnore]
+        public virtual Vehiculo Vehiculo { get; set; }
     }
 }

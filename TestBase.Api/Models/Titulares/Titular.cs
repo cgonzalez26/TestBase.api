@@ -15,6 +15,10 @@ namespace TestBase.Api.Models.Titulares
     {
         [Required]
         [StringLength(50)]
+        public string sNroDocumento { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string sNombre { get; set; }
         
         [StringLength(50)]

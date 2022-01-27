@@ -22,6 +22,9 @@ namespace TestBase.Api.Models.Usuarios
         [StringLength(1024)]
         [JsonIgnore]
         public string Password { get; set; }
+       
+        [StringLength(50)]
+        public string sNroDocumento { get; set; }
 
         [Required]
         [StringLength(64)]

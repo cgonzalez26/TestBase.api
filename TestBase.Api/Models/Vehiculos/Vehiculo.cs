@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TestBase.Api.Models.ImpuestosAut;
 using TestBase.Api.Models.VehiculosTitulares;
 
 namespace TestBase.Api.Models.Vehiculos
@@ -12,6 +13,10 @@ namespace TestBase.Api.Models.Vehiculos
     [Table("Vehiculos")]
     public class Vehiculo : Base
     {
+        [Required]
+        [StringLength(50)]
+        public string sDominio { get; set; }
+
         [StringLength(50)]
         public string sModelo { get; set; }
 
@@ -26,6 +31,9 @@ namespace TestBase.Api.Models.Vehiculos
         public string sDomicilio { get; set; }
 
         public int iPIN { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<ImpuestoAut> ImpuestosAut { get; set; } = new HashSet<ImpuestoAut>();
 
         [JsonIgnore]
         public virtual ICollection<VehiculoTitular> VehiculosTitulares { get; set; } = new HashSet<VehiculoTitular>();

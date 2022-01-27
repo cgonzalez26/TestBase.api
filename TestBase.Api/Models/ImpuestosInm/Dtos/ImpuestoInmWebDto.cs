@@ -21,5 +21,8 @@ namespace TestBase.Api.Models.ImpuestosInm.Dtos
         public double nPago { get; set; }
         public double nSaldo { get; set; }
         public string tObservaciones { get; set; }
+
+        [StringLength(64)]
+        public string InmuebleId { get; set; }
     }
 }

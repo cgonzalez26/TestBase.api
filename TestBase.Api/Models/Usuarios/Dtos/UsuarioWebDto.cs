@@ -44,6 +44,9 @@ namespace TestBase.Api.Models.Usuarios.Dtos
         [StringLength(16)]
         public string Telefono { get; set; }
 
+        [StringLength(50)]
+        public string sNroDocumento { get; set; }
+
         [Required]
         [StringLength(64)]
         public string RolId { get; set; }

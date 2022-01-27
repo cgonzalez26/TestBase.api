@@ -21,5 +21,8 @@ namespace TestBase.Api.Models.ImpuestosAut.Dtos
         public double nPago { get; set; }
         public double nSaldo { get; set; }
         public string tObservaciones { get; set; }
+
+        [StringLength(64)]
+        public string VehiculoId { get; set; }
     }
 }

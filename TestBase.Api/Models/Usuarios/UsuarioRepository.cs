@@ -29,7 +29,9 @@ namespace TestBase.Api.Models.Usuarios
                 Foto = e.Foto,
                 CodigoPostal = e.CodigoPostal,
                 Telefono = e.Telefono,
+                sNroDocumento = e.sNroDocumento,
                 RolId = e.RolId,
+                Rol = e.Rol
             }).FirstOrDefault();
             if (user == null) return null;
             //var passwordHasher = new PasswordHasher<UsuarioWebDto>();
