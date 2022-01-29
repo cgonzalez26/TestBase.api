@@ -96,6 +96,7 @@ namespace TestBase.Api.Models.ImpuestosAut
                     join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
                     join t in Context.Titulares on vt.TitularId equals t.Id
                     where t.sNroDocumento.Equals(NroDocumento)
+                    orderby v.sDominio, ia.iAnio, ia.iPeriodo
                     select new ImpuestoAutWebDto
                     {
                         Id = ia.Id,
@@ -112,7 +113,8 @@ namespace TestBase.Api.Models.ImpuestosAut
                 imp_aut = from ia in Context.ImpuestosAut
                     join v in Context.Vehiculos on ia.VehiculoId equals v.Id
                     join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
-                    join t in Context.Titulares on vt.TitularId equals t.Id         
+                    join t in Context.Titulares on vt.TitularId equals t.Id     
+                    orderby v.sDominio, ia.iAnio, ia.iPeriodo
                     select new ImpuestoAutWebDto
                     {
                         Id = ia.Id,
@@ -127,6 +129,28 @@ namespace TestBase.Api.Models.ImpuestosAut
                     };
             }                           
             return imp_aut.ToList();
+        }
+        public int getCountDeudaByNroDocumento(string NroDocumento)
+        {
+            var imp_aut = from ia in Context.ImpuestosAut
+                          join v in Context.Vehiculos on ia.VehiculoId equals v.Id
+                          join vt in Context.VehiculosTitulares on v.Id equals vt.VehiculoId
+                          join t in Context.Titulares on vt.TitularId equals t.Id
+                          where t.sNroDocumento.Equals(NroDocumento)
+                          && ia.nPago < ia.nMonto_Pagar                         
+                          select new ImpuestoAutWebDto
+                          {
+                              Id = ia.Id,
+                              dFecha_Pago = ia.dFecha_Pago,
+                              iAnio = ia.iAnio,
+                              iPeriodo = ia.iPeriodo,
+                              nMonto_Pagar = ia.nMonto_Pagar,
+                              sDominio = ia.sDominio,
+                              nPago = ia.nPago,
+                              nSaldo = ia.nSaldo,
+                              VehiculoId = ia.VehiculoId
+                          };
+            return imp_aut.Count();
         }
     }
 }

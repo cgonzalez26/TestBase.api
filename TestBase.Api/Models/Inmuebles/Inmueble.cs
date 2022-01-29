@@ -28,6 +28,9 @@ namespace TestBase.Api.Models.Inmuebles
 
         public int iPIN { get; set; }
 
+        [StringLength(50)]
+        public string sCatastro { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<ImpuestoInm> ImpuestosInm { get; set; } = new HashSet<ImpuestoInm>();
 

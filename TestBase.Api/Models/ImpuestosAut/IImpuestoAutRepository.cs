@@ -13,5 +13,6 @@ namespace TestBase.Api.Models.ImpuestosAut
 
          ICollection<EstablecimientoWebDto> CustomGetAll();*/
         ICollection<ImpuestoAutWebDto> getByNroDocumento(string NroDocumento);
+        int getCountDeudaByNroDocumento(string NroDocumento);
     }
 }

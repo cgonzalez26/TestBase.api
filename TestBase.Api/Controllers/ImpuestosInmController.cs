@@ -37,5 +37,11 @@ namespace TestBase.Api.Controllers
         {
             return _impuestos_inmRepository.getByNroDocumento(NroDocumento);
         }
+
+        [HttpGet, Route("getCountDeudaByNroDocumento/{NroDocumento}")]
+        public int getCountDeudaByNroDocumento(string NroDocumento)
+        {
+            return _impuestos_inmRepository.getCountDeudaByNroDocumento(NroDocumento);
+        }
     }
 }

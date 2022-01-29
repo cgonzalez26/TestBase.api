@@ -9,5 +9,7 @@ namespace TestBase.Api.Models.ImpuestosTsg
     public interface IImpuestoTsgRepository : IRepository<ImpuestoTsg>
     {
         ICollection<ImpuestoTsgWebDto> getByNroDocumento(string NroDocumento);
+
+        int getCountDeudaByNroDocumento(string NroDocumento);
     }
 }

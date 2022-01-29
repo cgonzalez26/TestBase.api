@@ -21,5 +21,8 @@ namespace TestBase.Api.Models.Inmuebles.Dtos
         public string sDomicilio { get; set; }
 
         public int iPIN { get; set; }
+
+        [StringLength(50)]
+        public string sCatastro { get; set; }
     }
 }

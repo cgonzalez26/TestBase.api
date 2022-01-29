@@ -12,15 +12,15 @@ namespace TestBase.Api.Models.ImpuestosAut.Dtos
     public class ImpuestoAutWebDto : Base
     {
         [JsonConverter(typeof(DateFormatConverter), "yyyy-MM-ddTHH:mm:ss.fffZ")]
-        public DateTime dFecha_Pago { get; set; }
-        public int iAnio { get; set; }
-        public int iPeriodo { get; set; }
-        public double nMonto_Pagar { get; set; }
+        public DateTime? dFecha_Pago { get; set; }
+        public int? iAnio { get; set; }
+        public int? iPeriodo { get; set; }
+        public double? nMonto_Pagar { get; set; }
 
         [StringLength(50)]
         public string sDominio { get; set; }
-        public double nPago { get; set; }
-        public double nSaldo { get; set; }
+        public double? nPago { get; set; }
+        public double? nSaldo { get; set; }
         public string tObservaciones { get; set; }
 
         [StringLength(64)]

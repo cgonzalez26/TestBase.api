@@ -9,5 +9,7 @@ namespace TestBase.Api.Models.ImpuestosInm
     public interface IImpuestoInmRepository : IRepository<ImpuestoInm>
     {
         ICollection<ImpuestoInmWebDto> getByNroDocumento(string NroDocumento);
+
+        int getCountDeudaByNroDocumento(string NroDocumento);
     }
 }
