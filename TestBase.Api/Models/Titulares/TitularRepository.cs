@@ -10,5 +10,10 @@ namespace TestBase.Api.Models.Titulares
         public TitularRepository(ApplicationDbContext context) : base(context)
         {
         }
+
+        public Titular getByNroDocumento(string NroDocumento) 
+        {
+            return Context.Titulares.Where(e => e.sNroDocumento.Equals(NroDocumento)).FirstOrDefault();
+        }
     }
 }

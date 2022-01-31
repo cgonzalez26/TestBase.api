@@ -24,7 +24,7 @@ select * from [dbo].[Usuarios]
 --sDomicilio='Zuviria 1100',sMail='f@f.f',sNroDocumento='666'
 --where id='105'
 
-select vt.TitularId,vt.VehiculoId,v.sDominio,t.sNombre,t.sApellido,t.sNroDocumento,ia.*
+select vt.TitularId,t.sDomicilio,vt.VehiculoId,v.sDominio,v.sMarca,v.sModelo,t.sNombre,t.sApellido,t.sNroDocumento,ia.*
 from Impuesto_Aut as ia
 inner join dbo.Vehiculos as v on v.id = ia.VehiculoId
 inner join dbo.VehiculosTitulares as vt on vt.VehiculoId = v.Id
@@ -66,6 +66,7 @@ select * from dbo.Inmuebles
 --set dFecha_Pago='2020-08-06 00:00:00.0000000',iPeriodo=08,iAnio=2020
 --where id='A4A738D8-8DA3-457F-A319-AD6C8EC521FC'
 
+--update dbo.Impuesto_Inm set nPago= 0 where nPago is null
 
 --insert into dbo.Impuesto_Inm(id,IsDeleted,dFecha_Pago,iAnio,iPeriodo,nMonto_Pagar,sCatastro,nPago,nSaldo,InmuebleId)
 --values

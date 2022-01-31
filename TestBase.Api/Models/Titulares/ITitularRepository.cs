@@ -7,5 +7,6 @@ namespace TestBase.Api.Models.Titulares
 {
     public interface ITitularRepository : IRepository<Titular>
     {
+        Titular getByNroDocumento(string NroDocumento);
     }
 }
