@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -29,6 +30,14 @@ namespace TestBase.Api.Controllers
             _denunciaRepository = denunciaRepository;
             BaseControllerOptions.GetAll = true;
             _mapper = mapper;
+        }
+
+        [AllowAnonymous]
+        [HttpPost, Route("addDenuncia")]
+        public IActionResult addDenuncia(Denuncia denuncia)
+        {
+            _denunciaRepository.InsertAndSave(denuncia);
+            return Ok();
         }
     }
 }
