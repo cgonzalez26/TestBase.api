@@ -15,9 +15,11 @@ namespace TestBase.Api.Models.Usuarios.Dtos
         public string UsuarioNombre { get; set; }
 
         [Required]
-        [StringLength(1024)]
-        [JsonIgnore]
+        [StringLength(1024)]        
         public string Password { get; set; }
+
+        [StringLength(50)]
+        public string sNroDocumento { get; set; }
 
         [Required]
         [StringLength(64)]

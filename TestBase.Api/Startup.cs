@@ -36,6 +36,7 @@ namespace TestBase.Api
                         builder.WithOrigins(
                         Configuration["AllowOrigins:Angular"],
                         Configuration["AllowOrigins:Localhost"],
+                        Configuration["AllowOrigins:Mobile"],
                         Configuration["AllowOrigins:ProdSecure"],
                         Configuration["AllowOrigins:ProdInsecure"]
                         ).AllowAnyHeader().AllowAnyMethod();

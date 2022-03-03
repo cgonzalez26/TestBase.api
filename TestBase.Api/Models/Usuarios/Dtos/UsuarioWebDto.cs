@@ -18,7 +18,6 @@ namespace TestBase.Api.Models.Usuarios.Dtos
 
         [Required]
         [StringLength(1024)]
-        [JsonIgnore]
         public string Password { get; set; }
 
         [Required]

@@ -15,7 +15,7 @@ using TestBase.Api.Models.Usuarios.Dtos;
 namespace TestBase.Api.Controllers
 {
     [Route("api/[controller]")]
-    
+
     public class UsuariosController : BaseController<Usuario>
     {
         private readonly IRepository<Usuario> _repository;
@@ -39,14 +39,15 @@ namespace TestBase.Api.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticationDto authenticationDto)
         {
-            try { 
-            var secretKey = _configuration["Authentication:Jwt:SecretKey"];
-            var expiresInDays = int.Parse(_configuration["Authentication:Jwt:ExpiresInDays"]);
-            var usuario = _usuarioRepository.Authenticate(authenticationDto.UsuarioNombre, authenticationDto.Password, secretKey, expiresInDays);
-            if (usuario == null) return BadRequest("Incorrecto Usuario o Password.");
-            return Ok(usuario);
-             }
-            catch(Exception e)
+            try
+            {
+                var secretKey = _configuration["Authentication:Jwt:SecretKey"];
+                var expiresInDays = int.Parse(_configuration["Authentication:Jwt:ExpiresInDays"]);
+                var usuario = _usuarioRepository.Authenticate(authenticationDto.UsuarioNombre, authenticationDto.Password, secretKey, expiresInDays);
+                if (usuario == null) return BadRequest("Incorrecto Usuario o Password.");
+                return Ok(usuario);
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -152,16 +153,59 @@ namespace TestBase.Api.Controllers
             user = new Usuario
             {
                 UsuarioNombre = input.UsuarioNombre,
+                Password = input.Password,
+                sNroDocumento = input.sNroDocumento,
                 Nombres = input.Nombres,
                 Apellidos = input.Apellidos,
                 FechaNacimiento = input.FechaNacimiento,
                 RolId = input.RolId,
+                Email = input.Email,
+                Telefono = input.Telefono,
             };
             user.Id = string.IsNullOrEmpty(input.Id) ? user.Id : input.Id;
             var password = passwordHasher.HashPassword(user, input.Password);
             user.Password = password;
             Repository.InsertAndSave(user);
-            return Ok();
+            return Ok(user);
+        }
+
+        [HttpPost, Route("web/update")]
+        public IActionResult Update(UsuarioWebDto input)
+        {
+            try
+            {
+                var _user = _usuarioRepository.Get(a => a.Id.Equals(input.Id)).FirstOrDefault();
+                if (_user == null)
+                {
+                    return BadRequest("El Usuario que esta intentando editar no existe.");
+                }
+                else
+                {
+                    var passwordHasher = new PasswordHasher<Usuario>();
+                    
+                    _user.UsuarioNombre = input.UsuarioNombre;
+                    //_user.Password = "";
+                    _user.Nombres = input.Nombres;
+                    _user.Apellidos = input.Apellidos;
+                    _user.FechaNacimiento = input.FechaNacimiento;
+                    _user.Email = input.Email;
+                    _user.Telefono = input.Telefono;
+                    _user.RolId = input.RolId;
+                    _user.sNroDocumento = input.sNroDocumento;
+                    //Evaluamos si cambia de Contraseña
+                    if (!input.Password.Equals("********")) {
+                        var password = passwordHasher.HashPassword(_user, input.Password);
+                        _user.Password = password;
+                    }
+                    _usuarioRepository.Update(_user);
+                    _usuarioRepository.Save();
+                }
+                return Ok(_user);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrió un error. Detalle: " + ex.Message);
+            }
         }
     }
 }

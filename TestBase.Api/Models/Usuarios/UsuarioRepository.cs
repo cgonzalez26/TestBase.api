@@ -34,12 +34,13 @@ namespace TestBase.Api.Models.Usuarios
                 Rol = e.Rol
             }).FirstOrDefault();
             if (user == null) return null;
-            //var passwordHasher = new PasswordHasher<UsuarioWebDto>();
-            //var verifyHashedPassword = passwordHasher.VerifyHashedPassword(user, user.Password, password);
-            //if (verifyHashedPassword != PasswordVerificationResult.Success)
-            //{
-            //    return null;
-            //}
+            //Verificar el Password ingresado con respecto al Password en BD
+            var passwordHasher = new PasswordHasher<UsuarioWebDto>();
+            var verifyHashedPassword = passwordHasher.VerifyHashedPassword(user, user.Password, password);
+            if (verifyHashedPassword != PasswordVerificationResult.Success)
+            {
+                return null;
+            }
             var token = JwtService.Instance.GetToken(user, secretKey, expiresInDays);
             if (string.IsNullOrEmpty(token)) return null;
             user.Token = token;
