@@ -11,6 +11,7 @@ namespace TestBase.Api.Models.Usuarios
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
+            builder.HasQueryFilter(m => !m.IsDeleted);
             builder
                 .HasIndex(b => b.UsuarioNombre)
                 .IsUnique();

@@ -17,6 +17,7 @@ using TestBase.Api.Models.Denuncias;
 using TestBase.Api.Models.TipoDenuncias;
 using TestBase.Api.Models.Vehiculos;
 using TestBase.Api.Models.VehiculosTitulares;
+using TestBase.Api.Models.Usuarios;
 
 namespace TestBase.Api.Models
 {
@@ -41,6 +42,7 @@ namespace TestBase.Api.Models
             modelBuilder.ApplyConfiguration(new TipoDenunciaConfiguration());
             modelBuilder.ApplyConfiguration(new VehiculoConfiguration());
             modelBuilder.ApplyConfiguration(new VehiculoTitularConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
         }
 
         public static void Seed(this ModelBuilder modelBuilder)
