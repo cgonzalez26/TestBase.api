@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 namespace TestBase.Api.Models.Inmuebles.Dtos
 {
     public class InmuebleWebDto : Base
-    {
-        [StringLength(50)]
-        public string sZona { get; set; }
-
+    {        
         [StringLength(50)]
         public string sTerreno { get; set; }
 
@@ -24,5 +21,8 @@ namespace TestBase.Api.Models.Inmuebles.Dtos
 
         [StringLength(50)]
         public string sCatastro { get; set; }
+
+        [StringLength(64)]
+        public string ZonaId { get; set; }
     }
 }

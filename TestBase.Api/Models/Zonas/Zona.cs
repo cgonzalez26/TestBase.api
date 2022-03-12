@@ -5,6 +5,7 @@ using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using TestBase.Api.Models.Establecimientos;
 using System.Collections.Generic;
+using TestBase.Api.Models.Inmuebles;
 
 namespace TestBase.Api.Models.Zonas
 {
@@ -35,5 +36,8 @@ namespace TestBase.Api.Models.Zonas
 
         [JsonIgnore]
         public virtual ICollection<Establecimiento> Establecimientos { get; set; } = new HashSet<Establecimiento>();
+
+        [JsonIgnore]
+        public virtual ICollection<Inmueble> Inmuebles { get; set; } = new HashSet<Inmueble>();
     }
 }

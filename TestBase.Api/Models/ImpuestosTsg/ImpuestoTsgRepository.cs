@@ -18,7 +18,7 @@ namespace TestBase.Api.Models.ImpuestosTsg
                           join i in Context.Inmuebles on itsg.InmuebleId equals i.Id
                           join it in Context.InmueblesTitulares on i.Id equals it.InmuebleId
                           join t in Context.Titulares on it.TitularId equals t.Id
-                          where t.sNroDocumento.Equals(NroDocumento)
+                          where (t.sNroDocumento.Equals(NroDocumento) || NroDocumento.Equals("admin"))
                           orderby itsg.sCatastro, itsg.iAnio, itsg.iPeriodo
                           select new ImpuestoTsgWebDto
                           {
@@ -32,7 +32,7 @@ namespace TestBase.Api.Models.ImpuestosTsg
                               nSaldo = itsg.nSaldo,
                               InmuebleId = itsg.InmuebleId
                           };
-            if (NroDocumento.Equals("admin"))
+            /*if (NroDocumento.Equals("admin"))
             {
                 imp_tsg = from itsg in Context.ImpuestosTsg
                           join i in Context.Inmuebles on itsg.InmuebleId equals i.Id
@@ -51,7 +51,7 @@ namespace TestBase.Api.Models.ImpuestosTsg
                               nSaldo = itsg.nSaldo,
                               InmuebleId = itsg.InmuebleId
                           };
-            }
+            }*/
             return imp_tsg.ToList();
         }
 
@@ -61,7 +61,7 @@ namespace TestBase.Api.Models.ImpuestosTsg
                           join i in Context.Inmuebles on itsg.InmuebleId equals i.Id
                           join it in Context.InmueblesTitulares on i.Id equals it.InmuebleId
                           join t in Context.Titulares on it.TitularId equals t.Id
-                          where t.sNroDocumento.Equals(NroDocumento)
+                          where (t.sNroDocumento.Equals(NroDocumento) || NroDocumento.Equals("admin"))
                           && itsg.nPago < itsg.nMonto_Pagar
                           select new ImpuestoTsgWebDto
                           {

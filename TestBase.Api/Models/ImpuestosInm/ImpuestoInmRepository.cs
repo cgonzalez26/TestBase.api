@@ -18,7 +18,7 @@ namespace TestBase.Api.Models.ImpuestosInm
                           join i in Context.Inmuebles on ii.InmuebleId equals i.Id
                           join it in Context.InmueblesTitulares on i.Id equals it.InmuebleId
                           join t in Context.Titulares on it.TitularId equals t.Id
-                          where t.sNroDocumento.Equals(NroDocumento)
+                          where (t.sNroDocumento.Equals(NroDocumento) || NroDocumento.Equals("admin"))
                           orderby ii.sCatastro, ii.iAnio, ii.iPeriodo
                           select new ImpuestoInmWebDto
                           {
@@ -32,7 +32,7 @@ namespace TestBase.Api.Models.ImpuestosInm
                               nSaldo = ii.nSaldo,
                               InmuebleId = ii.InmuebleId
                           };
-            if (NroDocumento.Equals("admin"))
+            /*if (NroDocumento.Equals("admin"))
             {
                 imp_inm = from ii in Context.ImpuestosInm
                           join i in Context.Inmuebles on ii.InmuebleId equals i.Id
@@ -51,7 +51,7 @@ namespace TestBase.Api.Models.ImpuestosInm
                               nSaldo = ii.nSaldo,
                               InmuebleId = ii.InmuebleId
                           };
-            }
+            }*/
             return imp_inm.ToList();
 
         }
@@ -62,7 +62,7 @@ namespace TestBase.Api.Models.ImpuestosInm
                           join i in Context.Inmuebles on ii.InmuebleId equals i.Id
                           join it in Context.InmueblesTitulares on i.Id equals it.InmuebleId
                           join t in Context.Titulares on it.TitularId equals t.Id
-                          where t.sNroDocumento.Equals(NroDocumento)
+                          where (t.sNroDocumento.Equals(NroDocumento) || NroDocumento.Equals("admin"))
                           && ii.nPago < ii.nMonto_Pagar
                           select new ImpuestoInmWebDto
                           {

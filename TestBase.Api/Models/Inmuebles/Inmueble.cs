@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 using TestBase.Api.Models.ImpuestosInm;
 using TestBase.Api.Models.ImpuestosTsg;
 using TestBase.Api.Models.InmueblesTitulares;
+using TestBase.Api.Models.Zonas;
 
 namespace TestBase.Api.Models.Inmuebles
 {
     [Table("Inmuebles")]
     public class Inmueble : Base
     {
-        [StringLength(50)]
-        public string sZona { get; set; }
-
         [StringLength(50)]
         public string sTerreno { get; set; }
 
@@ -30,6 +28,11 @@ namespace TestBase.Api.Models.Inmuebles
 
         [StringLength(50)]
         public string sCatastro { get; set; }
+
+        [StringLength(64)]
+        public string ZonaId { get; set; }
+        [JsonIgnore]
+        public virtual Zona Zonas { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<ImpuestoInm> ImpuestosInm { get; set; } = new HashSet<ImpuestoInm>();
