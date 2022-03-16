@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using TestBase.Api.Models.VehiculosTitulares;
 
 namespace TestBase.Api.Models.Titulares.Dtos
 {
-    public class TitularWebDto : Base
+    public class Deudores
     {
-        [Required]
+        [StringLength(50)]
+        public string sCatastro { get; set; }
+
         [StringLength(50)]
         public string sNombre { get; set; }
 
@@ -26,13 +26,7 @@ namespace TestBase.Api.Models.Titulares.Dtos
         [StringLength(50)]
         public string sCelular { get; set; }
 
-        [StringLength(128)]
-        public string sMail { get; set; }
-
         [StringLength(64)]
         public string ZonaId { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<VehiculoTitular> VehiculosTitulares { get; set; } = new HashSet<VehiculoTitular>();
     }
 }

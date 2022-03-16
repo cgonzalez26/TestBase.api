@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using TestBase.Api.Models.Establecimientos;
 using System.Collections.Generic;
 using TestBase.Api.Models.Inmuebles;
+using TestBase.Api.Models.Titulares;
 
 namespace TestBase.Api.Models.Zonas
 {
@@ -39,5 +40,8 @@ namespace TestBase.Api.Models.Zonas
 
         [JsonIgnore]
         public virtual ICollection<Inmueble> Inmuebles { get; set; } = new HashSet<Inmueble>();
+
+        [JsonIgnore]
+        public virtual ICollection<Titular> Titulares { get; set; } = new HashSet<Titular>();
     }
 }

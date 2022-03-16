@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models;
 using TestBase.Api.Models.Titulares;
+using TestBase.Api.Models.Titulares.Dtos;
 
 namespace TestBase.Api.Controllers
 {
@@ -35,6 +36,12 @@ namespace TestBase.Api.Controllers
         public Titular getByNroDocumento(string NroDocumento)
         {
             return _titularRepository.getByNroDocumento(NroDocumento);
+        }
+
+        [HttpGet, Route("deudoresByZona/{ZonaId}")]
+        public ICollection<Deudores> deudoresByZona(string ZonaId)
+        {
+            return _titularRepository.deudoresByZona(ZonaId);
         }
     }
 }

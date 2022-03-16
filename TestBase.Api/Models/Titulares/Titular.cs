@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestBase.Api.Models.InmueblesTitulares;
 using TestBase.Api.Models.VehiculosTitulares;
+using TestBase.Api.Models.Zonas;
 
 namespace TestBase.Api.Models.Titulares
 {
@@ -35,6 +36,11 @@ namespace TestBase.Api.Models.Titulares
 
         [StringLength(128)]
         public string sMail { get; set; }
+
+        [StringLength(64)]
+        public string ZonaId { get; set; }
+        [JsonIgnore]
+        public virtual Zona Zonas { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<InmuebleTitular> InmueblesTitulares { get; set; } = new HashSet<InmuebleTitular>();
