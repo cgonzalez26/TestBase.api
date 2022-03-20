@@ -9,7 +9,7 @@ namespace TestBase.Api.Models.Titulares.Dtos
     public class Deudores
     {
         [StringLength(50)]
-        public string sCatastro { get; set; }
+        public string sNroDocumento { get; set; }
 
         [StringLength(50)]
         public string sNombre { get; set; }

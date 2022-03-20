@@ -11,5 +11,11 @@ namespace TestBase.Api.Models.Zonas
         public ZonaRepository(ApplicationDbContext context) : base(context)
         {
         }
+
+        public ICollection<Zona> zonaByDepartamento(string departamentoId)
+        {
+            return Context.Zonas.Where(e => e.PadreId.Equals(departamentoId)).ToList();
+        }
+
     }
 }

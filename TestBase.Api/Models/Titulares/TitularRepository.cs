@@ -17,37 +17,60 @@ namespace TestBase.Api.Models.Titulares
             return Context.Titulares.Where(e => e.sNroDocumento.Equals(NroDocumento)).FirstOrDefault();
         }
 
-        public ICollection<Deudores> deudoresByZona(string zonaid)
+        public List<Deudores> deudoresByZona(string zonaid)
         {
-            var deudores_aut = from itsg in Context.ImpuestosAut
+            var deudores_aut = (from itsg in Context.ImpuestosAut
                                join vt in Context.VehiculosTitulares on itsg.VehiculoId equals vt.VehiculoId
                                join t in Context.Titulares on vt.TitularId equals t.Id
                                where itsg.nPago < itsg.nMonto_Pagar
+                               && (t.ZonaId == zonaid || zonaid.Equals("ID_ALL"))
                                select new
                                {
-                                   itsg.sDominio,
+                                   //itsg.sDominio,
+                                   t.sNroDocumento,
                                    t.sNombre,
                                    t.sApellido,
                                    t.sDomicilio,
                                    t.sTelefono,
                                    t.sCelular,
                                    t.ZonaId
-                               };
-            var deudores_inm = from iinm in Context.ImpuestosInm
+                               }).Distinct();
+            var deudores_inm = (from iinm in Context.ImpuestosInm
                                join it in Context.InmueblesTitulares on iinm.InmuebleId equals it.InmuebleId
                                join t in Context.Titulares on it.TitularId equals t.Id
                                where iinm.nPago < iinm.nMonto_Pagar
+                               && (t.ZonaId == zonaid || zonaid.Equals("ID_ALL"))
                                select new
                                {
-                                   iinm.sCatastro,
+                                   //iinm.sCatastro,
+                                   t.sNroDocumento,
                                    t.sNombre,
                                    t.sApellido,
                                    t.sDomicilio,
                                    t.sTelefono,
                                    t.sCelular,
                                    t.ZonaId
-                               };
-            ICollection<Deudores> deudores = null;
+                               }).Distinct();
+            var deudores_tsg = (from itsg in Context.ImpuestosTsg
+                                join it in Context.InmueblesTitulares on itsg.InmuebleId equals it.InmuebleId
+                                join t in Context.Titulares on it.TitularId equals t.Id
+                                where itsg.nPago < itsg.nMonto_Pagar
+                                && (t.ZonaId == zonaid || zonaid.Equals("ID_ALL"))
+                                select new
+                                {
+                                    //iinm.sCatastro,
+                                    t.sNroDocumento,
+                                    t.sNombre,
+                                    t.sApellido,
+                                    t.sDomicilio,
+                                    t.sTelefono,
+                                    t.sCelular,
+                                    t.ZonaId
+                                }).Distinct();
+
+            List<Deudores> deudores = new List<Deudores>();
+            deudores_aut.Union(deudores_inm);
+            deudores_aut.Union(deudores_tsg);
             Deudores deudor = null;
             if (deudores_aut.Count() > 0)
             {
@@ -55,7 +78,8 @@ namespace TestBase.Api.Models.Titulares
                 {
                     deudor = new Deudores
                     {
-                        sCatastro = deu_aut.sDomicilio,
+                        //sCatastro = deu_aut.sDomicilio,
+                        sNroDocumento = deu_aut.sNroDocumento,
                         sApellido = deu_aut.sApellido,
                         sNombre = deu_aut.sNombre,
                         sDomicilio = deu_aut.sDomicilio,
@@ -65,37 +89,7 @@ namespace TestBase.Api.Models.Titulares
                     deudores.Add(deudor);
                 }
             }
-
-            foreach (var deu_inm in deudores_inm)
-            {
-                deudor = new Deudores
-                {
-                    sCatastro = deu_inm.sCatastro,
-                    sApellido = deu_inm.sApellido,
-                    sNombre = deu_inm.sNombre,
-                    sDomicilio = deu_inm.sDomicilio,
-                    sTelefono = deu_inm.sTelefono,
-                    ZonaId = deu_inm.ZonaId
-                };
-                deudores.Add(deudor);
-            }
-
-            /*var deudores = from i in Context.Inmuebles 
-                          join it in Context.InmueblesTitulares on i.Id equals it.InmuebleId
-                          join t in Context.Titulares on it.TitularId equals t.Id
-                          where (i.ZonaId.Equals(zonaid) || (zonaid == null))
-
-                          select new Deudores
-                          {                              
-                              sCatastro = i.sCatastro,
-                              sNombre = t.sNombre,
-                              sApellido = t.sApellido,
-                              sDomicilio = t.sDomicilio,
-                              sTelefono = t.sTelefono,
-                              sCelular = t.sCelular
-                          };
-            return deudores.ToList();*/
-            return deudores;
+            return deudores.ToList();
         }
     }
 }

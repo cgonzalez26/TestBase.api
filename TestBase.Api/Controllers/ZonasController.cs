@@ -99,5 +99,12 @@ namespace TestBase.Api.Controllers
             }
             return _repository.GetByQuery(query);
         }
+
+
+        [HttpGet, Route("zonaByDepartamento/{departamentoId}")]
+        public ICollection<Zona> zonaByDepartamento(string departamentoId)
+        {
+            return _zoneRepository.zonaByDepartamento(departamentoId);
+        }
     }
 }
