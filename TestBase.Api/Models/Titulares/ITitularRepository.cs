@@ -9,6 +9,6 @@ namespace TestBase.Api.Models.Titulares
     public interface ITitularRepository : IRepository<Titular>
     {
         Titular getByNroDocumento(string NroDocumento);
-        List<Deudores> deudoresByZona(string zonaId);
+        public dynamic deudoresByZona(string zonaid);
     }
 }
