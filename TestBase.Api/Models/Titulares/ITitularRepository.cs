@@ -10,5 +10,6 @@ namespace TestBase.Api.Models.Titulares
     {
         Titular getByNroDocumento(string NroDocumento);
         public dynamic deudoresByZona(string zonaid);
+        public dynamic getDeudasByTitularId(string titularid);
     }
 }

@@ -27,5 +27,15 @@ namespace TestBase.Api.Models.Titulares
             return rows;
 
         }
+
+        public dynamic getDeudasByTitularId(string titularid)
+        {
+            List<Impuestos> rows = new List<Impuestos>();
+            Context.LoadStoredProc("getDeudasByTitularId")
+                .AddParam("@TitularId", titularid)
+                .Exec(r => rows = r.ToList<Impuestos>());
+            return rows;
+
+        }
     }
 }

@@ -43,5 +43,12 @@ namespace TestBase.Api.Controllers
         {
             return _titularRepository.deudoresByZona(ZonaId);
         }
+
+        [HttpGet, Route("getDeudasByTitularId/{TitularId}")]
+        public ICollection<Impuestos> getDeudasByTitularId(string TitularId)
+        {
+            return _titularRepository.getDeudasByTitularId(TitularId);
+        }
+        
     }
 }
