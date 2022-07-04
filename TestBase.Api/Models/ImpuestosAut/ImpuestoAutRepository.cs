@@ -134,7 +134,12 @@ namespace TestBase.Api.Models.ImpuestosAut
                               nSaldo = ia.nSaldo,
                               VehiculoId = ia.VehiculoId
                           };
-            return imp_aut.Count();
+            var cantidad = 0;
+            if (imp_aut != null)
+            {
+                cantidad = imp_aut.Count();
+            }
+            return cantidad;
         }
     }
 }

@@ -76,7 +76,13 @@ namespace TestBase.Api.Models.ImpuestosInm
                               InmuebleId = ii.InmuebleId,
                               sCatastro = ii.sCatastro
                           };
-            return imp_inm.Count();
+            var cantidad = 0;
+            if (imp_inm != null)
+            {
+                cantidad = imp_inm.Count();
+            }
+            return cantidad;
+
         }
     }
 }
